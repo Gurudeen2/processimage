@@ -1,9 +1,9 @@
 from django.shortcuts import render
-# from .models import WaterMarkRemove, RemoveBackground
-# from PIL import Image, ImageDraw, ImageFont
-# import os
-# from django.core.files import File
-# from rembg import remove
+from .models import WaterMarkRemove, RemoveBackground
+from PIL import Image, ImageDraw, ImageFont
+import os
+from django.core.files import File
+from rembg import remove
 
 # Create your views here.
 
@@ -12,23 +12,23 @@ def home(request):
 
 
 def remove_img_background(request):
-    # if request.method == "POST":
-        # img = request.FILES['removeimg']
+    if request.method == "POST":
+        img = request.FILES['removeimg']
 
-        # filename = str(img).split(".")
-        # img_path = Image.open(img)
+        filename = str(img).split(".")
+        img_path = Image.open(img)
 
 
-        # img_path.save("media/photo/"+filename[0]+"."+img_path.format)
+        img_path.save("media/photo/"+filename[0]+"."+img_path.format)
         
         
-        # output = Image.open(f'media/photo/{filename[0]}.{img_path.format}')
-        # imgregb = remove(output)
-        # # # removedbg = open(img_path, "rb")
-        # imgregb = imgregb.convert("RGB")
-        # imgregb.save(f'media/photo/{filename[0]}.{img_path.format}')
-        # l_img = open(f'media/photo/{filename[0]}.{img_path.format}', "rb")
-        # convert_img_to_file = File(l_img)
+        output = Image.open(f'media/photo/{filename[0]}.{img_path.format}')
+        imgregb = remove(output)
+        # # removedbg = open(img_path, "rb")
+        imgregb = imgregb.convert("RGB")
+        imgregb.save(f'media/photo/{filename[0]}.{img_path.format}')
+        l_img = open(f'media/photo/{filename[0]}.{img_path.format}', "rb")
+        convert_img_to_file = File(l_img)
         
         # # save image to database
         # remove_db = RemoveBackground.objects.create()
