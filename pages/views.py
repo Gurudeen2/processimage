@@ -1,4 +1,9 @@
 from django.shortcuts import render
+# from .models import WaterMarkRemove, RemoveBackground
+# from PIL import Image, ImageDraw, ImageFont
+# import os
+# from django.core.files import File
+# from rembg import remove
 
 # Create your views here.
 
