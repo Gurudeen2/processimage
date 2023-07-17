@@ -11,6 +11,40 @@ def home(request):
     return render(request, 'pages/home.html')
 
 
+def addwatermark(request):
+    if request.method == "POST":
+
+        img = request.FILES["image"]
+        word = request.POST["text"]
+
+
+        watermark = WaterMarkRemove.objects.create()
+       
+
+# add text to image
+        filename = str(img).split(".")
+        im = Image.open(img)
+        
+        width, height = im.size
+
+
+        text = Image.new("RGBA", im.size, (255, 255, 255, 0))
+
+        font = ImageFont.truetype("arial.ttf", 50)
+        txt = ImageDraw.Draw(text)
+        draw = ImageDraw.Draw(im)
+        _, _, w, h, = txt.textbbox((0,0), word, font=font)
+        
+        draw.text(((width-w-10), (height-h-10)), word,(255,255,255), font=font)
+
+        im.save("media/photo/"+filename[0]+"."+im.format)
+        l_img = open(f'media/photo/{filename[0]}.{im.format}', "rb")
+        convert_img_to_file = File(l_img)
+        watermark.photo.save(filename[0]+"."+im.format, convert_img_to_file)
+      
+        # return render(request, "page/watermark.html", context={"wimage":WaterMarkRemove.objects.all().first().photo})
+    return render(request, "pages/watermark.html")
+
 def remove_img_background(request):
     if request.method == "POST":
         img = request.FILES['removeimg']

@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% load static %} {% block title %} Add Watermark to
+image {% endblock %} {% block content %}
+<div class="container py-4">
+  <div class="row">
+    <div class="col">
+      <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label for="formGroupExampleInput" class="form-label">Text</label>
+          <input
+            type="text"
+            class="form-control"
+            name="text"
+            id="formGroupExampleInput"
+            placeholder="Text for Watermark"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="formFileMultiple" class="form-label">Select Image</label>
+          <input
+            class="form-control"
+            type="file"
+            id="formFileMultiple"
+            name="image"
+            required
+            accept="image/*"
+          />
+        </div>
+        <div>
+          <input type="submit" value="Add Watermark" class="btn btn-success" />
+        </div>
+      </form>
+    </div>
+
+    <div class="col">
+     
+    </div>
+  </div>
+</div>
+
+{% endblock %}
