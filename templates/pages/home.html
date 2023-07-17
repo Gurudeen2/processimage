@@ -8,8 +8,15 @@
         <span> Add watermarks to your image </span>
       </div>
     </div>
-    <div class="row">
-      <div class="col"></div>
+     <div class="row">
+      <div class="col">
+        <a href="{% url 'addwatermark' %}" class="btn btn-danger btn-sm"
+          >Add Watermark</a
+        >
+        <a href="{% url 'removebgimg' %}" class="btn btn-success btn-sm"
+          >Remove Image Background</a
+        >
+      </div>
     </div>
   </div>
 </div>
