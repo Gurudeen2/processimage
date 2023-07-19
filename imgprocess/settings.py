@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'cloudinary_storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -90,6 +92,11 @@ DATABASES ={
     'default':dj_database_url.parse(env('DATABASE_URL'))
 }
 
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET': env('API_SECRET')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -125,15 +132,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_ROOT =BASE_DIR / 'static'
+# STATIC_ROOT =BASE_DIR / 'static'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-   BASE_DIR / 'imgprocess/static'
+   BASE_DIR / 'static'
 ]
+STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 
 # media folder settings
-MEDIA_ROOT =BASE_DIR / 'media'
+# MEDIA_ROOT =BASE_DIR / 'media'
+
 MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 

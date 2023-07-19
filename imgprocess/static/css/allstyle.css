@@ -5,9 +5,7 @@ body {
   background: #ffffff;
 }
 #homepage {
-  background: url("../../../static/img/bg2.jpg") no-repeat center center;
+  background: url("/static/img/bg2.jpg") no-repeat center center;
   color: #fff;
   height: 70%;
 }
-
-
