@@ -1,6 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Home {% endblock%}
 {% block content %}
-<div id="homepage">
+<div
+  id="homepage"
+  style="background: url('{% static 'img/bg2.jpg' %}') no-repeat center center"
+>
   <div class="container">
     <div class="row">
       <div class="col py-5">
@@ -8,7 +11,7 @@
         <span> Add watermarks to your image </span>
       </div>
     </div>
-     <div class="row">
+    <div class="row">
       <div class="col">
         <a href="{% url 'addwatermark' %}" class="btn btn-danger btn-sm"
           >Add Watermark</a
